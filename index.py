@@ -17,8 +17,10 @@ Base = declarative_base()
 
 class Title(Base):
 
-    __tablename__ = 'title'
-    title= Column(String(200),primary_key=True)
+    __tablename__ = 'user2'
+    title= Column(String(300),primary_key=True)
+    name=  Column(String(300))
+    time=  Column(datetime())
 
 
 class User(Base):
@@ -35,8 +37,11 @@ session = DBSession()
 
 aa=session.query(Title).all()
 
-bb=session.query(Title.title).limit(5).all()
-bb= str(bb).replace('u\'','\'').decode("unicode-escape") 
+#titlename=session.query(Title.title).limit(10).all()
+titlename=session.query(Title.title).filter(Title.title.like("%爱奇艺%")).order_by(desc(time)).limit(1).all()
+titlename= str(titlename).replace('u\'','\'').decode("unicode-escape")
+titlename=titlename[3:]
+titlename=titlename[:-10]
 
 @app.route("/")
 def index():
@@ -45,7 +50,7 @@ def index():
     day  = strftime("%d",localtime())
     hour = strftime("%H",localtime())
 
-    return render_template('index.html',year=bb)
+    return render_template('index.html',year=titlename)
  
 @app.route("/<new>")
 def time():
