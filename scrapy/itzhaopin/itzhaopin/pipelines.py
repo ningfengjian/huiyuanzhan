@@ -27,6 +27,6 @@ class JsonWithEncodingTencentPipeline(object):
             return item
 
     def insert_into_table(self,conn,item):
-    	        aa=time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    	        aa=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
                 #conn.execute('insert into user3(name) values(%s)', (item['name']))
                 conn.execute('insert into user2(name,title,time) values(%s,%s,%s)', (item['name'],item['title'],aa))

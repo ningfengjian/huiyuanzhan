@@ -98,11 +98,13 @@
                                 </header>
                                 
                                 <div class="content-text">
-                                <a 
-                                    <div><p>{{ year}} <b></b></p></div>
-                                    </p>
+                                <a   {% for title in titles %}
+                                    <div><p><b><a href="/aiqiyi/{{title}}">{{title}}</a><br></b></p>
+
+                                     {% endfor %}
+                                    </div>
                                    
-                                </div>            
+                                              
 
                             </section> <!-- #about -->
 

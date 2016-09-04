@@ -19,12 +19,12 @@ from itzhaopin.misc.log import *
 
 class TencentSpider(CrawlSpider):
     name = "tencent"
-    allowed_domains = ["lenet.cc"]
+    allowed_domains = ["wljx.net"]
     start_urls = [
-        "http://www.lenet.cc/forum-2-1.html"
+        "http://www.wljx.net/forum-36-1.html"
     ]
     rules = [
-        Rule(sle(allow=("http://www.lenet.cc/thread-\d{5}-[\s\S]*.html")), follow=True, callback='parse_item')
+        Rule(sle(allow=("http://www.wljx.net/thread-\d{5}-[\s\S]*.html")), follow=True, callback='parse_item')
     ]
 
     def parse_item(self, response):
